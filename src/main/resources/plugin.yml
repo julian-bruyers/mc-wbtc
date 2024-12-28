@@ -1,0 +1,7 @@
+name: WBTC
+version: '${project.version}'
+main: de.wbtc.mcplugin.WBTC
+api-version: '1.21'
+authors: [Julian Bruyers]
+description: A simple Minecraft survival bukkit/paper server enhancement plugin.
+website: https://www.github.com/julian-bruyers/mc-wbtc
