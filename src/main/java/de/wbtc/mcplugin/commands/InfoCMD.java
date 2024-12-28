@@ -16,6 +16,18 @@ import org.jetbrains.annotations.NotNull;
  */
 public class InfoCMD implements CommandExecutor {
 
+    /**
+     * This method is called, when the info command is executed.
+     *
+     * For regular players without the "wbtc.info" permission, the plugin name and author will be displayed.
+     * For players with the "wbtc.info" permission (and op's), the plugin name, author and version will be displayed.
+     *
+     * @param sender The sender of the command
+     * @param cmd The command
+     * @param label The label of the command
+     * @param args The arguments of the command
+     * @return true if the command was executed successfully
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command cmd, @NotNull String label, @NotNull String[] args) {
 
