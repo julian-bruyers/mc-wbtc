@@ -1,8 +1,5 @@
 package de.wbtc.mcplugin;
 
-//Java
-import java.util.Objects;
-
 //Commands
 import de.wbtc.mcplugin.commands.InfoCMD;
 
