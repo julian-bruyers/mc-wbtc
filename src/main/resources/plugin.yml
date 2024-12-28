@@ -1,7 +1,18 @@
 name: WBTC
 version: '${project.version}'
 main: de.wbtc.mcplugin.WBTC
-api-version: '1.21'
 authors: [Julian Bruyers]
 description: A simple Minecraft survival bukkit/paper server enhancement plugin.
 website: https://www.github.com/julian-bruyers/mc-wbtc
+api-version: '1.21'
+commands:
+  wbtc:
+    description: Get information about the plugin.
+    usage: "/wbtc"
+    aliases: [wbtcinfo]
+    permission:
+    permission-message:
+permissions:
+    wbtc.info:
+        description: Permission to use the full info command.
+        default: op
