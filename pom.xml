@@ -6,7 +6,7 @@
 
   <groupId>de.wbtc.mcplugin</groupId>
   <artifactId>WBTC</artifactId>
-  <version>1.0-BETA</version>
+  <version>1.0.0-BETA</version>
   <packaging>jar</packaging>
 
   <name>WBTC</name>
