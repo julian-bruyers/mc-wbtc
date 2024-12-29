@@ -19,8 +19,10 @@ public final class WBTC extends JavaPlugin {
      */
     @Override
     public void onEnable() {
-        getCommand("wbtc").setExecutor(new InfoCMD());
+        registerCommands();
+        registerEvents();
 
+        logStart();
     }
 
     /**
@@ -29,5 +31,17 @@ public final class WBTC extends JavaPlugin {
     @Override
     public void onDisable() {
 
+    }
+
+    private void registerCommands() {
+        getCommand("wbtc").setExecutor(new InfoCMD());
+    }
+
+    private void registerEvents() {
+
+    }
+
+    private void logStart() {
+        getLogger().info(String.format(Settings.START_LOGO, getServer().getBukkitVersion()));
     }
 }
