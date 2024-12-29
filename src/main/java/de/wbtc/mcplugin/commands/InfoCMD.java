@@ -15,6 +15,7 @@ import org.jetbrains.annotations.NotNull;
  * @author Julian Bruyers
  */
 public class InfoCMD implements CommandExecutor {
+    public static final String PERMISSION = "wbtc.info";
 
     /**
      * This method is called, when the info command is executed.
@@ -40,7 +41,7 @@ public class InfoCMD implements CommandExecutor {
 
         Player player = (Player) sender;
 
-        if (player.hasPermission("wbtc.info") || player.isOp()) {
+        if (player.hasPermission(PERMISSION) || player.isOp()) {
             String message =    ChatColor.WHITE + "["
                                 + ChatColor.GOLD + Settings.PLUGIN_NAME
                                 + ChatColor.WHITE + "] "
