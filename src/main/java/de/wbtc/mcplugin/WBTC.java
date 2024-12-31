@@ -63,9 +63,13 @@ public final class WBTC extends JavaPlugin {
 
 
     private void registerCommands(WBTC plugin) {
-        getCommand("wbtc").setExecutor(new InfoCMD());
-        getCommand("friend").setExecutor(new FriendCMD(plugin));
-        getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
+        try {
+            getCommand("wbtc").setExecutor(new InfoCMD());
+            getCommand("friend").setExecutor(new FriendCMD(plugin));
+            getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
+        } catch (Exception e) {
+            //TODO: Implement a proper error handling and logger
+        }
     }
 
     private void registerEvents() {
