@@ -24,22 +24,6 @@ public class FriendDB {
         this.db = db;
     }
 
-    public void addFriend(Player player, Player friend) {
-        UUID player1 = player.getUniqueId();
-        UUID player2 = friend.getUniqueId();
-
-        if (!db.containsKey(player1)) {
-            db.put(player1, new HashSet<>());
-        }
-
-        if (!db.containsKey(player2)) {
-            db.put(player2, new HashSet<>());
-        }
-
-        db.get(player1).add(player2);
-        db.get(player2).add(player1);
-    }
-
     public void addFriend(UUID player, UUID friend, Server server) {
         if (!db.containsKey(player)) {
             db.put(player, new HashSet<>());
