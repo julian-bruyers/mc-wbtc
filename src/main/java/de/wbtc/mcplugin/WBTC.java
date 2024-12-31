@@ -1,9 +1,15 @@
 package de.wbtc.mcplugin;
 
 //Commands
+import de.wbtc.mcplugin.commands.EnderChestCMD;
+import de.wbtc.mcplugin.commands.FriendCMD;
 import de.wbtc.mcplugin.commands.InfoCMD;
 
+//Event Listeners
+import de.wbtc.mcplugin.events.PlayerJoinListener;
+
 //Bukkit
+import de.wbtc.mcplugin.db.DataBaseHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
@@ -13,16 +19,19 @@ import org.bukkit.plugin.java.JavaPlugin;
  * @author Julian Bruyers
  */
 public final class WBTC extends JavaPlugin {
+    private DataBaseHandler dbHandler;
 
     /**
      * Main method called, when the plugin is enabled/loaded by the server.
      */
     @Override
     public void onEnable() {
-        registerCommands();
+        this.dbHandler = new DataBaseHandler(this);
+
+        registerCommands(this);
         registerEvents();
 
-        logStart();
+        displayLogoToConsole();
     }
 
     /**
@@ -31,17 +40,39 @@ public final class WBTC extends JavaPlugin {
     @Override
     public void onDisable() {
 
+        this.dbHandler.save();
     }
 
-    private void registerCommands() {
+    /**
+     * The log method for the plugin.
+     * Logs will be written to the console of the server and therefor in the server logfiles as well.
+     *
+     * @param msg The message to log.
+     */
+    public void log(String msg) {
+        getLogger().info(msg);
+    }
+
+    /**
+     * Getter method for the database handler.
+     * @return The database handler of the plugin.
+     */
+    public DataBaseHandler getDbHandler() {
+        return this.dbHandler;
+    }
+
+
+    private void registerCommands(WBTC plugin) {
         getCommand("wbtc").setExecutor(new InfoCMD());
+        getCommand("friend").setExecutor(new FriendCMD(plugin));
+        getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
     }
 
     private void registerEvents() {
-
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
     }
 
-    private void logStart() {
-        getLogger().info(String.format(Settings.START_LOGO, getServer().getBukkitVersion()));
+    private void displayLogoToConsole() {
+        log(String.format(Settings.START_LOGO, getServer().getBukkitVersion()));
     }
 }

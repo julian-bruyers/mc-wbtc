@@ -12,7 +12,28 @@ commands:
     aliases: [wbtcinfo]
     permission:
     permission-message:
+  friend:
+    description: Manage your friends.
+    usage: "/friend add/remove/accept/deny <player> or /friend list or /friend requests also (@a for <player> addresses all players)"
+    aliases:
+    permission:
+    permission-message:
+  enderchest:
+    description: Open your enderchest or another players enderchest when giving their name (Only works with friends).
+    usage: "/enderchest (<player>)"
+    aliases: [ec]
+    permission:
+    permission-message:
 permissions:
     wbtc.info:
         description: Permission to use the full info command.
+        default: op
+    wbtc.friend:
+        description: Permission to use the friend command.
+        default: op
+    wbtc.enderchest.self:
+        description: Permission to open your own enderchest.
+        default: op
+    wbtc.enderchest.other:
+        description: Permission to open other players enderchest.
         default: op

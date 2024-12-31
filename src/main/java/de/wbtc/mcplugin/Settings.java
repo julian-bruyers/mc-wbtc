@@ -28,4 +28,8 @@ public final class Settings {
 
     public static final String NO_PERMISSION = ChatColor.RED + "You require the %s permission to execute this command.";
 
+    public static final String INVALID_CONSOLE_CMD =    "["
+                                                        + PLUGIN_NAME
+                                                        + "] This command can only be executed by players.";
+
 }
