@@ -1,11 +1,17 @@
+/**
+ * The friend database of the plugin.
+ *
+ * @author Julian Bruyers
+ */
+
 package de.wbtc.mcplugin.db;
 
 import org.bukkit.Server;
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.UUID;
+import java.util.HashSet;
+import java.util.HashMap;
 
 public class FriendDB {
     public static final String FRIEND_DB_FILENAME = "friendDB.wbtc";
@@ -16,35 +22,20 @@ public class FriendDB {
         db = new HashMap<>();
     }
 
-    public HashMap<UUID, HashSet<UUID>> getDB() {
-        return this.db;
-    }
+    public HashMap<UUID, HashSet<UUID>> getDB() { return this.db; }
 
-    public void setDB(HashMap<UUID, HashSet<UUID>> db) {
-        this.db = db;
-    }
+    public void setDB(HashMap<UUID, HashSet<UUID>> db) { this.db = db; }
 
     public void addFriend(UUID player, UUID friend, Server server) {
-        if (!db.containsKey(player)) {
-            db.put(player, new HashSet<>());
-        }
-
-        if (!db.containsKey(friend)) {
-            db.put(friend, new HashSet<>());
-        }
-
+        if (!db.containsKey(player)) { db.put(player, new HashSet<>()); }
+        if (!db.containsKey(friend)) { db.put(friend, new HashSet<>()); }
         db.get(player).add(friend);
         db.get(friend).add(player);
     }
 
     public void removeFriend(UUID player, UUID friend) {
-        if (db.containsKey(player)) {
-            db.get(player).remove(friend);
-        }
-
-        if (db.containsKey(friend)) {
-            db.get(friend).remove(player);
-        }
+        if (db.containsKey(player)) { db.get(player).remove(friend); }
+        if (db.containsKey(friend)) { db.get(friend).remove(player); }
     }
 
     public void removeAllFriends(Player player) {
@@ -57,10 +48,7 @@ public class FriendDB {
     }
 
     public boolean isFriend(Player player, Player friend) {
-        UUID player1 = player.getUniqueId();
-        UUID player2 = friend.getUniqueId();
-
-        return db.containsKey(player1) && db.get(player1).contains(player2);
+        return db.containsKey(player.getUniqueId()) && db.get(player.getUniqueId()).contains(friend.getUniqueId());
     }
 
     public HashSet<UUID> getFriends(Player player) {

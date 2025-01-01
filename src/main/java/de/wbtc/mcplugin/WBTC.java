@@ -1,3 +1,9 @@
+/**
+ * The main class of the WBTC plugin.
+ *
+ * @author Julian Bruyers
+ */
+
 package de.wbtc.mcplugin;
 
 //Commands
@@ -15,11 +21,6 @@ import de.wbtc.mcplugin.db.DataBaseHandler;
 import org.bukkit.plugin.java.JavaPlugin;
 
 
-/**
- * The main class of the WBTC plugin.
- *
- * @author Julian Bruyers
- */
 public final class WBTC extends JavaPlugin {
     private DataBaseHandler dbHandler;
 
@@ -72,7 +73,8 @@ public final class WBTC extends JavaPlugin {
             getCommand("gm").setExecutor(new GamemodeCMD());
             getCommand("position").setExecutor(new PositionCMD(plugin));
         } catch (Exception e) {
-            //TODO: Implement a proper error handling and logger
+            log("Command registration failed!");
+            log(e.getMessage());
         }
     }
 

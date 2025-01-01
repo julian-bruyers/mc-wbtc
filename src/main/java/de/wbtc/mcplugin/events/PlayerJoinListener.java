@@ -1,12 +1,19 @@
+/**
+ * The PlayerJoinListener class listens.
+ *
+ * @author Julian Bruyers
+ */
+
 package de.wbtc.mcplugin.events;
 
-import de.wbtc.mcplugin.Settings;
 import de.wbtc.mcplugin.WBTC;
+import de.wbtc.mcplugin.Settings;
 import de.wbtc.mcplugin.db.DataBaseHandler;
+
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.EventHandler;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class PlayerJoinListener implements Listener {
@@ -21,14 +28,10 @@ public class PlayerJoinListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
 
-        /*
-         * Update the player name in the database.
-         */
+        //Update the player name in the database.
         updatePlayerNameDB(event.getPlayer());
 
-        /*
-         * Show open friend requests to the player.
-         */
+        //Show open friend requests to the player.
         showOpenRequests(event.getPlayer());
     }
 
@@ -39,15 +42,12 @@ public class PlayerJoinListener implements Listener {
     }
 
     private void showOpenRequests(Player player) {
-        if (this.db.getFriendRequestDB().getFriendRequests(player).isEmpty()) {
-            return;
-        }
+        if (this.db.getFriendRequestDB().getFriendRequests(player).isEmpty()) { return; }
 
         player.sendMessage(Settings.PLUGIN_PREFIX + "Your open friend requests:");
-
-        this.db.getFriendRequestDB().getFriendRequests(player).forEach(requestingPlayer -> player.sendMessage(
-                ChatColor.WHITE +
-                        "> " + ChatColor.AQUA + this.db.getPlayerNameDB().getName(requestingPlayer)));
+        this.db.getFriendRequestDB().getFriendRequests(player).forEach(requestingPlayer ->
+                player.sendMessage(ChatColor.WHITE + "> "
+                        + ChatColor.AQUA + this.db.getPlayerNameDB().getName(requestingPlayer)));
 
         player.sendMessage(Settings.PLUGIN_PREFIX + "Use /friend accept <player> to accept a request.");
     }

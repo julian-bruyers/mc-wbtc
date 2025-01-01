@@ -1,13 +1,13 @@
-package de.wbtc.mcplugin;
-
-import org.bukkit.ChatColor;
-
 /**
  * The settings class of the WBTC plugin.
  *
  * @author Julian Bruyers
- * @version 1.0.0
  */
+
+package de.wbtc.mcplugin;
+
+import org.bukkit.ChatColor;
+
 public final class Settings {
     public static final boolean DEBUG = false;
     public static final String PLUGIN_NAME = "WBTC";

@@ -1,3 +1,9 @@
+/**
+ * Command to open the ender chest of the player or another player.
+ *
+ * @author Julian Bruyers
+ */
+
 package de.wbtc.mcplugin.commands;
 
 import de.wbtc.mcplugin.WBTC;
@@ -12,12 +18,6 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.ConsoleCommandSender;
 
 import org.jetbrains.annotations.NotNull;
-
-/**
- * Command to open the ender chest of the player or another player.
- *
- * @author Julian Bruyers
- */
 
 public class EnderChestCMD implements CommandExecutor {
     public static final String PERMISSION_SELF = "wbtc.enderchest.self";
@@ -47,9 +47,7 @@ public class EnderChestCMD implements CommandExecutor {
         Player player = (Player) sender;
 
         switch (args.length) {
-            /*
-             * Open the ender chest of the player.
-             */
+            //Open the ender chest of the player.
             case 0:
                 if (player.hasPermission(PERMISSION_SELF)) {
                     player.openInventory(player.getEnderChest());
@@ -58,9 +56,7 @@ public class EnderChestCMD implements CommandExecutor {
                 }
                 break;
 
-            /*
-             * Open the ender chest of another player.
-             */
+            //Open the ender chest of another player.
             case 1:
                 if (!player.hasPermission(PERMISSION_OTHER)) {
                     player.sendMessage(String.format(Settings.NO_PERMISSION, PERMISSION_OTHER));
@@ -82,7 +78,6 @@ public class EnderChestCMD implements CommandExecutor {
                 }
                 player.openInventory(target.getEnderChest());
         }
-
         return true;
     }
 }

@@ -1,9 +1,15 @@
+/**
+ * The player name database of the plugin.
+ *
+ * @author Julian Bruyers
+ */
+
 package de.wbtc.mcplugin.db;
 
 import org.bukkit.entity.Player;
 
-import java.util.HashMap;
 import java.util.UUID;
+import java.util.HashMap;
 
 public class PlayerNameDB {
     public static final String PLAYER_NAME_DB_FILENAME = "playerNameDB.wbtc";
@@ -14,13 +20,11 @@ public class PlayerNameDB {
         this.db = new HashMap<>();
     }
 
-    public HashMap<UUID, String> getDB() {
-        return this.db;
-    }
+    public HashMap<UUID, String> getDB() { return this.db; }
 
-    public void setDB(HashMap<UUID, String> db) {
-        this.db = db;
-    }
+    public void setDB(HashMap<UUID, String> db) { this.db = db; }
+
+    public String getName(UUID uuid) { return this.db.get(uuid); }
 
     public void updatePlayer(Player player) {
         if (this.db.containsKey(player.getUniqueId())) {
@@ -28,19 +32,6 @@ public class PlayerNameDB {
         } else {
             this.db.put(player.getUniqueId(), player.getName());
         }
-    }
-
-    //TODO: REMOVE THIS METHOD
-    public void updatePlayer(UUID uuid, String name) {
-        if (this.db.containsKey(uuid)) {
-            this.db.replace(uuid, name);
-        } else {
-            this.db.put(uuid, name);
-        }
-    }
-
-    public String getName(UUID uuid) {
-        return this.db.get(uuid);
     }
 
     public UUID getUUID(String name) {

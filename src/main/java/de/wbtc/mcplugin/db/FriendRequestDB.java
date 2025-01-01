@@ -1,13 +1,19 @@
+/**
+ * The friend request database of the plugin.
+ *
+ * @author Julian Bruyers
+ */
+
 package de.wbtc.mcplugin.db;
 
-import de.wbtc.mcplugin.Settings;
-import org.bukkit.ChatColor;
 import org.bukkit.Server;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
+import de.wbtc.mcplugin.Settings;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.UUID;
+import java.util.HashSet;
+import java.util.HashMap;
 
 public class FriendRequestDB {
     public static final String FRIEND_REQUEST_DB_FILENAME = "friendRequestDB.wbtc";
@@ -18,13 +24,9 @@ public class FriendRequestDB {
         this.db = new HashMap<>();
     }
 
-    public HashMap<UUID, HashSet<UUID>> getDB() {
-        return this.db;
-    }
+    public HashMap<UUID, HashSet<UUID>> getDB() { return this.db; }
 
-    public void setDB(HashMap<UUID, HashSet<UUID>> db) {
-        this.db = db;
-    }
+    public void setDB(HashMap<UUID, HashSet<UUID>> db) { this.db = db; }
 
     public void addFriendRequest(UUID player, UUID requestingPlayer, Server server) {
         if (!this.db.containsKey(player)) {
@@ -32,9 +34,7 @@ public class FriendRequestDB {
         }
         this.db.get(player).add(requestingPlayer);
 
-        /*
-         * If the player receiving the friend request is online, send them a message.
-         */
+        //If the player receiving the friend request is online, send them a message.
         for (Player current : server.getOnlinePlayers()) {
             if (current.getUniqueId().equals(player)) {
                 current.sendMessage(Settings.PLUGIN_PREFIX
@@ -49,9 +49,7 @@ public class FriendRequestDB {
     }
 
     public void removeFriendRequest(UUID player, UUID requestingPlayer) {
-        if (this.db.containsKey(player)) {
-            this.db.get(player).remove(requestingPlayer);
-        }
+        if (this.db.containsKey(player)) { this.db.get(player).remove(requestingPlayer); }
     }
 
     public void clearFriendRequests(Player player) {
