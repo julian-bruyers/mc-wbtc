@@ -14,7 +14,7 @@ import java.util.HashSet;
 import java.util.HashMap;
 
 public class FriendDB {
-    public static final String FRIEND_DB_FILENAME = "friendDB.wbtc";
+    public static final String FRIEND_DB_FILENAME = "friends.wbtc";
 
     private HashMap<UUID, HashSet<UUID>> db;
 

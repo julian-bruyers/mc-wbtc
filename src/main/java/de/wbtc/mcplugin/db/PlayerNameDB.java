@@ -12,7 +12,7 @@ import java.util.UUID;
 import java.util.HashMap;
 
 public class PlayerNameDB {
-    public static final String PLAYER_NAME_DB_FILENAME = "playerNameDB.wbtc";
+    public static final String PLAYER_NAME_DB_FILENAME = "playerNames.wbtc";
 
     private HashMap<UUID, String> db;
 
