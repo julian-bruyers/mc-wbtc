@@ -30,6 +30,12 @@ commands:
     aliases:
     permission:
     permission-message:
+  position:
+    description: Broadcast your positions to your friends or get a friends position.
+    usage: "/position (broadcasts your position to all your friends) /position <player> (gets the position of a friend)"
+    aliases: [pos]
+    permission:
+    permission-message:
 permissions:
     wbtc.info:
         description: Permission to use the full info command.
@@ -54,4 +60,7 @@ permissions:
         default: op
     wbtc.gamemode.spectator:
         description: Permission to change your gamemode to spectator.
+        default: op
+    wbtc.position:
+        description: Permission to use the position command.
         default: op

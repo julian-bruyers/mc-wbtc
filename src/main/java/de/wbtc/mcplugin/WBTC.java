@@ -5,6 +5,7 @@ import de.wbtc.mcplugin.commands.EnderChestCMD;
 import de.wbtc.mcplugin.commands.FriendCMD;
 import de.wbtc.mcplugin.commands.GamemodeCMD;
 import de.wbtc.mcplugin.commands.InfoCMD;
+import de.wbtc.mcplugin.commands.PositionCMD;
 
 //Event Listeners
 import de.wbtc.mcplugin.events.PlayerJoinListener;
@@ -69,6 +70,7 @@ public final class WBTC extends JavaPlugin {
             getCommand("friend").setExecutor(new FriendCMD(plugin));
             getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
             getCommand("gm").setExecutor(new GamemodeCMD());
+            getCommand("position").setExecutor(new PositionCMD(plugin));
         } catch (Exception e) {
             //TODO: Implement a proper error handling and logger
         }
