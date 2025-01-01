@@ -44,7 +44,7 @@ public class PingCMD implements CommandExecutor {
 
         if (getVersion() >= 1.17) {
             player.sendMessage(Settings.PLUGIN_PREFIX
-                    + ChatColor.GREEN + "Your ping is: "
+                    + ChatColor.GREEN + "Your ping is "
                     + ChatColor.WHITE + player.getPing() + "ms");
         } else {
             try {
@@ -52,7 +52,7 @@ public class PingCMD implements CommandExecutor {
                 int ping = (int) nmsPlayer.getClass().getField("ping").get(nmsPlayer);
 
                 player.sendMessage(Settings.PLUGIN_PREFIX
-                        + ChatColor.GREEN + "Your ping is: "
+                        + ChatColor.GREEN + "Your ping is "
                         + ChatColor.WHITE + ping + "ms");
 
             } catch (Exception e) {
