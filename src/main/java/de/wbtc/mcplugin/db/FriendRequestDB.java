@@ -41,9 +41,11 @@ public class FriendRequestDB {
                         // getDisplayName() will not return a null pointer as it is checked beforehand
                         // that the requestingPlayer is online.
                         + server.getPlayer(requestingPlayer).getDisplayName()
-                        + ChatColor.GREEN + " has sent you a friend request. Use "
-                        + ChatColor.WHITE + "/friend accept " + server.getPlayer(requestingPlayer).getDisplayName()
-                        + ChatColor.GREEN + " to accept the request.");
+                        + ChatColor.GREEN + " has sent you a friend request.");
+
+                current.sendMessage("Use /friend accept "
+                        + ChatColor.AQUA + server.getPlayer(requestingPlayer).getDisplayName()
+                        + ChatColor.WHITE + " to accept the request.");
             }
         }
     }

@@ -49,7 +49,7 @@ public class PlayerJoinListener implements Listener {
                 player.sendMessage(ChatColor.WHITE + "> "
                         + ChatColor.AQUA + this.db.getPlayerNameDB().getName(requestingPlayer)));
 
-        player.sendMessage(Settings.PLUGIN_PREFIX + "Use /friend accept <player> to accept a request.");
+        player.sendMessage("Use /friend accept <player> to accept a request.");
     }
 }
 

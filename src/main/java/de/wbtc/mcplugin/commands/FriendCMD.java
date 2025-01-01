@@ -108,9 +108,8 @@ public class FriendCMD implements CommandExecutor {
 
     private void listFriends(Player player) {
         if (friendDB.getFriends(player).isEmpty()) {
-            player.sendMessage(Settings.PLUGIN_PREFIX
-                    + ChatColor.GREEN + "You currently have no friends. "
-                    + "Use /friend add <player> to add a friend.");
+            player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.GREEN + "You currently have no friends.");
+            player.sendMessage("Use /friend add <player> to add a friend.");
             return;
         }
 
@@ -131,7 +130,7 @@ public class FriendCMD implements CommandExecutor {
         friendRequestDB.getFriendRequests(player).forEach(requestingPlayer ->
                 player.sendMessage(ChatColor.WHITE + "> "
                         + ChatColor.AQUA + playerNameDB.getName(requestingPlayer)));
-        player.sendMessage(Settings.PLUGIN_PREFIX + "Use /friend accept <player> to accept a request.");
+        player.sendMessage("Use /friend accept <player> to accept a request.");
     }
 
     private void addFriend(Player target, Player player, boolean allPlayers) {
