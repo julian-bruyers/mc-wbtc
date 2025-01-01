@@ -36,6 +36,12 @@ commands:
     aliases: [pos]
     permission:
     permission-message:
+  ping:
+    description: Get your current ping to the server.
+    usage: "/ping"
+    aliases:
+    permission:
+    permission-message:
 permissions:
     wbtc.info:
         description: Permission to use the full info command.
@@ -63,4 +69,7 @@ permissions:
         default: op
     wbtc.position:
         description: Permission to use the position command.
+        default: op
+    wbtc.ping:
+        description: Permission to use the ping command.
         default: op
