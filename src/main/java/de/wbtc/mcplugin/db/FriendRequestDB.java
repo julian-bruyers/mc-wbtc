@@ -38,6 +38,8 @@ public class FriendRequestDB {
         for (Player current : server.getOnlinePlayers()) {
             if (current.getUniqueId().equals(player)) {
                 current.sendMessage(Settings.PLUGIN_PREFIX
+                        // getDisplayName() will not return a null pointer as it is checked beforehand
+                        // that the requestingPlayer is online.
                         + server.getPlayer(requestingPlayer).getDisplayName()
                         + ChatColor.GREEN + " has sent you a friend request. Use "
                         + ChatColor.WHITE + "/friend accept " + server.getPlayer(requestingPlayer).getDisplayName()
