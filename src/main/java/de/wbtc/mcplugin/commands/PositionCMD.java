@@ -52,6 +52,7 @@ public class PositionCMD implements CommandExecutor {
                     if (friends.contains(current.getUniqueId())) {sendPosition(current, player); }
                 }
                 player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.GREEN + "Sent your position to all friends.");
+                break;
             case 1:
                 Player posPlayer = player.getServer().getPlayer(args[0]);
                 if (posPlayer == null) {
@@ -66,6 +67,7 @@ public class PositionCMD implements CommandExecutor {
                             + ChatColor.GREEN + "You are not friends with "
                             + ChatColor.WHITE + posPlayer.getName());
                 }
+                break;
         }
         return true;
     }
@@ -80,6 +82,7 @@ public class PositionCMD implements CommandExecutor {
                 + ChatColor.AQUA + posPlayer.getLocation().getBlockY()
                 + ChatColor.WHITE + ", "
                 + ChatColor.AQUA + posPlayer.getLocation().getBlockZ()
-                + ChatColor.WHITE + "]");
+                + ChatColor.WHITE + "] in the "
+                + ChatColor.AQUA + posPlayer.getWorld().getEnvironment());
     }
 }
