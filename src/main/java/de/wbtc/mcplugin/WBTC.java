@@ -7,18 +7,19 @@
 package de.wbtc.mcplugin;
 
 //Commands
-import de.wbtc.mcplugin.commands.EnderChestCMD;
+import de.wbtc.mcplugin.commands.InfoCMD;
+import de.wbtc.mcplugin.commands.PingCMD;
 import de.wbtc.mcplugin.commands.FriendCMD;
 import de.wbtc.mcplugin.commands.GamemodeCMD;
-import de.wbtc.mcplugin.commands.InfoCMD;
 import de.wbtc.mcplugin.commands.PositionCMD;
+import de.wbtc.mcplugin.commands.EnderChestCMD;
 
 //Event Listeners
 import de.wbtc.mcplugin.events.PlayerJoinListener;
 
 //Bukkit
-import de.wbtc.mcplugin.db.DataBaseHandler;
 import org.bukkit.plugin.java.JavaPlugin;
+import de.wbtc.mcplugin.db.DataBaseHandler;
 
 
 public final class WBTC extends JavaPlugin {
@@ -68,10 +69,11 @@ public final class WBTC extends JavaPlugin {
     private void registerCommands(WBTC plugin) {
         try {
             getCommand("wbtc").setExecutor(new InfoCMD());
-            getCommand("friend").setExecutor(new FriendCMD(plugin));
-            getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
             getCommand("gm").setExecutor(new GamemodeCMD());
+            getCommand("ping").setExecutor(new PingCMD(plugin));
+            getCommand("friend").setExecutor(new FriendCMD(plugin));
             getCommand("position").setExecutor(new PositionCMD(plugin));
+            getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
         } catch (Exception e) {
             log("Command registration failed!");
             log(e.getMessage());
