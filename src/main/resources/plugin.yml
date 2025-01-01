@@ -24,6 +24,12 @@ commands:
     aliases: [ec]
     permission:
     permission-message:
+  gm:
+    description: Change your gamemode.
+    usage: "/gm <0/1/2/3>"
+    aliases:
+    permission:
+    permission-message:
 permissions:
     wbtc.info:
         description: Permission to use the full info command.
@@ -36,4 +42,16 @@ permissions:
         default: op
     wbtc.enderchest.other:
         description: Permission to open other players enderchest.
+        default: op
+    wbtc.gamemode.survival:
+        description: Permission to change your gamemode to survival.
+        default: op
+    wbtc.gamemode.creative:
+        description: Permission to change your gamemode to creative.
+        default: op
+    wbtc.gamemode.adventure:
+        description: Permission to change your gamemode to adventure.
+        default: op
+    wbtc.gamemode.spectator:
+        description: Permission to change your gamemode to spectator.
         default: op
