@@ -119,7 +119,10 @@ public class DataBaseHandler {
 
         if (!directory.exists()) {
             wbtc.log("Database " + DB_PATH + " folder does not exists. Creating it now.");
-            directory.mkdir();
+
+            if (!directory.mkdir()) {
+                wbtc.log("Could not create " + DB_PATH + " folder.");
+            }
         }
 
         if (!file.exists()) {
