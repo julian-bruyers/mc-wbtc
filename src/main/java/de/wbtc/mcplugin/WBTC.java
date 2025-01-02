@@ -16,6 +16,7 @@ import de.wbtc.mcplugin.commands.EnderChestCMD;
 
 //Event Listeners
 import de.wbtc.mcplugin.events.PlayerJoinListener;
+import de.wbtc.mcplugin.events.PlayerUsesBedListener;
 
 //Bukkit
 import org.bukkit.plugin.java.JavaPlugin;
@@ -43,8 +44,9 @@ public final class WBTC extends JavaPlugin {
      */
     @Override
     public void onDisable() {
-
         this.dbHandler.save();
+
+        log("Plugin disabled! Goodbye!");
     }
 
     /**
@@ -74,6 +76,8 @@ public final class WBTC extends JavaPlugin {
             getCommand("friend").setExecutor(new FriendCMD(plugin));
             getCommand("position").setExecutor(new PositionCMD(plugin));
             getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
+
+            log("Registered commands successfully!");
         } catch (Exception e) {
             log("Command registration failed!");
             log(e.getMessage());
@@ -81,8 +85,15 @@ public final class WBTC extends JavaPlugin {
     }
 
     private void registerEvents(WBTC plugin) {
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(plugin), plugin);
+        try {
+            getServer().getPluginManager().registerEvents(new PlayerJoinListener(plugin), plugin);
+            getServer().getPluginManager().registerEvents(new PlayerUsesBedListener(plugin), plugin);
 
+            log("Registered events successfully!");
+        } catch (Exception e) {
+            log("Event registration failed!");
+            log(e.getMessage());
+        }
     }
 
     private void displayLogoToConsole() {

@@ -73,6 +73,8 @@ public class DataBaseHandler {
 
             objectMapper.writeValue(new File(DB_PATH + "/" + PlayerNameDB.PLAYER_NAME_DB_FILENAME)
                     , this.playerNameDB.getDB());
+
+            wbtc.log("Database files saved.");
         } catch (Exception e) {
             wbtc.log("Database save failed!");
             wbtc.log(e.getMessage());
