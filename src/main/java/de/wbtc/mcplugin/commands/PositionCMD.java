@@ -24,6 +24,10 @@ import org.jetbrains.annotations.NotNull;
 public class PositionCMD implements CommandExecutor {
     public static final String PERMISSION = "wbtc.position";
 
+    private static final String OVERWORLD = "NORMAL";
+    private static final String NETHER = "NETHER";
+    private static final String END = "THE_END";
+
     private final WBTC wbtc;
 
     public PositionCMD(WBTC plugin) {
@@ -83,6 +87,17 @@ public class PositionCMD implements CommandExecutor {
                 + ChatColor.WHITE + ", "
                 + ChatColor.AQUA + posPlayer.getLocation().getBlockZ()
                 + ChatColor.WHITE + "] in the "
-                + ChatColor.AQUA + posPlayer.getWorld().getEnvironment());
+                + ChatColor.AQUA + getDimension(posPlayer.getWorld().getEnvironment().toString()));
+    }
+
+    private String getDimension(String environment) {
+        switch (environment) {
+            case OVERWORLD:
+                return "overworld";
+            case NETHER:
+                return "nether";
+            case END:
+                return "end";
+        }
     }
 }
