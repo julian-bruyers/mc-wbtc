@@ -99,5 +99,6 @@ public class PositionCMD implements CommandExecutor {
             case END:
                 return "end";
         }
+        return "matrix";
     }
 }
