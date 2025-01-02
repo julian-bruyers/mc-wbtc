@@ -33,7 +33,7 @@ public final class WBTC extends JavaPlugin {
         this.dbHandler = new DataBaseHandler(this);
 
         registerCommands(this);
-        registerEvents();
+        registerEvents(this);
 
         displayLogoToConsole();
     }
@@ -80,8 +80,9 @@ public final class WBTC extends JavaPlugin {
         }
     }
 
-    private void registerEvents() {
-        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+    private void registerEvents(WBTC plugin) {
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(plugin), plugin);
+
     }
 
     private void displayLogoToConsole() {
