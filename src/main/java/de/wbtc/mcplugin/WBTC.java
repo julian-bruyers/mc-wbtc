@@ -22,6 +22,8 @@ import de.wbtc.mcplugin.events.PlayerUsesBedListener;
 import org.bukkit.plugin.java.JavaPlugin;
 import de.wbtc.mcplugin.db.DataBaseHandler;
 
+import java.util.Objects;
+
 
 public final class WBTC extends JavaPlugin {
     private DataBaseHandler dbHandler;
@@ -70,12 +72,12 @@ public final class WBTC extends JavaPlugin {
 
     private void registerCommands(WBTC plugin) {
         try {
-            getCommand("wbtc").setExecutor(new InfoCMD());
-            getCommand("gm").setExecutor(new GamemodeCMD());
-            getCommand("ping").setExecutor(new PingCMD(plugin));
-            getCommand("friend").setExecutor(new FriendCMD(plugin));
-            getCommand("position").setExecutor(new PositionCMD(plugin));
-            getCommand("enderchest").setExecutor(new EnderChestCMD(plugin));
+            Objects.requireNonNull(getCommand("wbtc")).setExecutor(new InfoCMD());
+            Objects.requireNonNull(getCommand("gm")).setExecutor(new GamemodeCMD());
+            Objects.requireNonNull(getCommand("ping")).setExecutor(new PingCMD(plugin));
+            Objects.requireNonNull(getCommand("friend")).setExecutor(new FriendCMD(plugin));
+            Objects.requireNonNull(getCommand("position")).setExecutor(new PositionCMD(plugin));
+            Objects.requireNonNull(getCommand("enderchest")).setExecutor(new EnderChestCMD(plugin));
 
             log("Registered commands successfully!");
         } catch (Exception e) {
