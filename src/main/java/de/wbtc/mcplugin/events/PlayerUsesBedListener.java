@@ -7,8 +7,10 @@
 
 package de.wbtc.mcplugin.events;
 
+import de.wbtc.mcplugin.Settings;
 import de.wbtc.mcplugin.WBTC;
 
+import org.bukkit.ChatColor;
 import org.bukkit.Statistic;
 import org.bukkit.World;
 import org.bukkit.entity.Player;
@@ -32,14 +34,25 @@ public class PlayerUsesBedListener implements Listener {
 
         if ((time <= 23457 && time >= 12542) || world.isThundering()) {
             player.getServer().getScheduler().scheduleSyncDelayedTask(wbtc, () -> {
-                if(player.isSleeping()) {
+                if(player.isSleeping() && player.getWorld().getEnvironment().toString().equals("NORMAL")) {
                     world.setTime(0);
                     world.setThundering(false);
                     world.setStorm(false);
-                    world.getPlayers().forEach(current -> current.setStatistic(Statistic.TIME_SINCE_REST, 0));
+                    player.setStatistic(Statistic.TIME_SINCE_REST, 0);
+                    world.getPlayers().forEach(current -> executeSleep(current, player));
+
                     wbtc.log(player.getName() + " skipped the night for " + player.getWorld().getName());
                 }
             }, TICKS_TO_SLEEP);
+        }
+    }
+
+    private void executeSleep(Player current, Player player) {
+        current.setStatistic(Statistic.TIME_SINCE_REST, 0);
+        if (current.getUniqueId() != player.getUniqueId()) {
+            current.sendMessage(Settings.PLUGIN_PREFIX
+                    + ChatColor.WHITE + player.getName()
+                    + ChatColor.GREEN + " skipped the night.");
         }
     }
 }
