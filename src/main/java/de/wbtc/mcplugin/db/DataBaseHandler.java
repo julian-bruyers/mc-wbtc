@@ -13,10 +13,15 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import de.wbtc.mcplugin.WBTC;
 
+
 import java.io.File;
 import java.util.UUID;
 import java.util.HashSet;
 import java.util.HashMap;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collections;
+
 
 public class DataBaseHandler {
     public static final String DB_PATH = "./plugins/WBTC";
@@ -111,14 +116,17 @@ public class DataBaseHandler {
         File file = new File(DB_PATH + "/" + fileName);
 
         if (!directory.exists()) {
-            wbtc.log(DB_PATH + " folder does not exists. Creating it now.");
+            wbtc.log("Database " + DB_PATH + " folder does not exists. Creating it now.");
             directory.mkdir();
         }
 
         if (!file.exists()) {
             wbtc.log(fileName + " does not exists. Creating it now.");
             try {
-                file.createNewFile();
+                if (file.createNewFile()) {
+                    //Write empty JSON object to file
+                    Files.write(Paths.get(DB_PATH + "/" + fileName), Collections.singletonList("{}"));
+                }
             } catch (Exception e) {
                 wbtc.log("Failed to create " + fileName);
                 wbtc.log(e.getMessage());
