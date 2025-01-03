@@ -27,7 +27,8 @@ public class InfoCMD implements CommandExecutor {
                              @NotNull String[] args) {
 
         if (sender instanceof ConsoleCommandSender) {
-            sender.sendMessage("[" + Settings.PLUGIN_NAME + "]" + "Plugin by " + Settings.AUTHOR
+            sender.sendMessage("[" + Settings.PLUGIN_NAME + "]"
+                    + " Plugin by " + Settings.AUTHOR
                     + " is running on Version (" + Settings.VERSION + ")");
             return true;
         }
@@ -35,17 +36,13 @@ public class InfoCMD implements CommandExecutor {
         Player player = (Player) sender;
 
         if (player.hasPermission(PERMISSION)) {
-            player.sendMessage(ChatColor.WHITE + "["
-                    + ChatColor.GOLD + Settings.PLUGIN_NAME
-                    + ChatColor.WHITE + "] "
+            player.sendMessage(Settings.PLUGIN_PREFIX
                     + "Plugin by " + Settings.AUTHOR
                     + " running on ("
                     + ChatColor.GREEN + Settings.VERSION
                     + ChatColor.WHITE + ")");
         } else {
-            player.sendMessage(ChatColor.WHITE+ "["
-                    + ChatColor.GOLD + Settings.PLUGIN_NAME
-                    + ChatColor.WHITE + "] "
+            player.sendMessage(Settings.PLUGIN_PREFIX
                     + "Plugin by " + Settings.AUTHOR);
         }
         return true;
