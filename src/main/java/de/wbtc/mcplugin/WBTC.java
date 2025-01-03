@@ -52,6 +52,14 @@ public final class WBTC extends JavaPlugin {
     }
 
     /**
+     * Getter method for the database handler.
+     * @return The database handler of the plugin.
+     */
+    public DataBaseHandler getDbHandler() {
+        return this.dbHandler;
+    }
+
+    /**
      * The log method for the plugin.
      * Logs will be written to the console of the server and therefor in the server logfiles as well.
      *
@@ -59,14 +67,6 @@ public final class WBTC extends JavaPlugin {
      */
     public void log(String msg) {
         getLogger().info(msg);
-    }
-
-    /**
-     * Getter method for the database handler.
-     * @return The database handler of the plugin.
-     */
-    public DataBaseHandler getDbHandler() {
-        return this.dbHandler;
     }
 
 
