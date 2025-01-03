@@ -86,7 +86,7 @@ public class PositionCMD implements CommandExecutor {
                 + ChatColor.AQUA + posPlayer.getLocation().getBlockY()
                 + ChatColor.WHITE + ", "
                 + ChatColor.AQUA + posPlayer.getLocation().getBlockZ()
-                + ChatColor.WHITE + "] in the "
+                + ChatColor.GREEN + "] in the "
                 + ChatColor.AQUA + getDimension(posPlayer.getWorld().getEnvironment().toString()));
     }
 
