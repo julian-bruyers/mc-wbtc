@@ -9,7 +9,6 @@ package de.wbtc.mcplugin;
 import org.bukkit.ChatColor;
 
 public final class Settings {
-    public static final boolean DEBUG = false;
     public static final String PLUGIN_NAME = "WBTC";
     public static final String VERSION = "1.0.0-BETA";
     public static final String AUTHOR = "Julian Bruyers";
@@ -22,9 +21,9 @@ public final class Settings {
             + "  \\ \\/\\/ /| _ \\ | || (__ " + "     Running on Bukkit/Paper (v%s)" + System.lineSeparator()
             + "   \\_/\\_/ |___/ |_| \\___|" + System.lineSeparator();
 
-    public static final String PLUGIN_PREFIX = ChatColor.WHITE + "["
-            + ChatColor.GOLD + PLUGIN_NAME
-            + ChatColor.WHITE + "] ";
+    public static final String PLUGIN_PREFIX = ChatColor.WHITE + "" + ChatColor.BOLD + "["
+            + ChatColor.GOLD + ChatColor.BOLD + PLUGIN_NAME
+            + ChatColor.WHITE + ChatColor.BOLD + "] " + ChatColor.RESET;
 
     public static final String NO_PERMISSION = ChatColor.RED + "You require the %s permission to execute this command.";
 
@@ -32,4 +31,8 @@ public final class Settings {
                                                         + PLUGIN_NAME
                                                         + "] This command can only be executed by players.";
 
+
+    public Settings() {
+        throw new IllegalStateException("Utility class");
+    }
 }
