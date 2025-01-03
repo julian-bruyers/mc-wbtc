@@ -137,6 +137,12 @@ public class FriendCMD implements CommandExecutor {
         //Send friend request to all online players
         if (allPlayers) { addAllPlayers(player); return; }
 
+        if (player.getUniqueId().equals(target.getUniqueId())) {
+            player.sendMessage(Settings.PLUGIN_PREFIX
+                    + ChatColor.GREEN + "You cannot add yourself as a friend.");
+            return;
+        }
+
         //If a friend request has already been sent by the player, add the player to the friend list.
         if (friendRequestDB.getFriendRequests(player).contains(target.getUniqueId())) {
             friendRequestDB.getFriendRequests(player).remove(target.getUniqueId());
