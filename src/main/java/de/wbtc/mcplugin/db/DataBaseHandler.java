@@ -85,7 +85,7 @@ public class DataBaseHandler {
      * Initializes the databases by reading the current state from the file system.
      */
     private void init() {
-        wbtc.log("Loading databases...");
+        wbtc.log("Loading databases.");
 
         File friendDbFile = createDBFileIfAbsent(FriendDB.FRIEND_DB_FILENAME);
         File friendRqDbFile = createDBFileIfAbsent(FriendRequestDB.FRIEND_REQUEST_DB_FILENAME);
