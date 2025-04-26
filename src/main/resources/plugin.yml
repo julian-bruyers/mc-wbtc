@@ -67,9 +67,12 @@ permissions:
     wbtc.gamemode.spectator:
         description: Permission to change your gamemode to spectator.
         default: op
-    wbtc.position:
+    wbtc.position.self:
         description: Permission to use the position command.
         default: op
+    wbtc.position.other:
+      description: Permission to use the position command.
+      default: op
     wbtc.ping:
         description: Permission to use the ping command.
         default: op

@@ -22,7 +22,8 @@ import java.util.HashSet;
 import org.jetbrains.annotations.NotNull;
 
 public class PositionCMD implements CommandExecutor {
-    public static final String PERMISSION = "wbtc.position";
+    public static final String PERMISSION_SELF = "wbtc.position.self";
+    public static final String PERMISSION_OTHER = "wbtc.position.other";
 
     private static final String OVERWORLD = "NORMAL";
     private static final String NETHER = "NETHER";
@@ -42,8 +43,8 @@ public class PositionCMD implements CommandExecutor {
 
         if (sender instanceof ConsoleCommandSender) { sender.sendMessage(Settings.INVALID_CONSOLE_CMD); return true; }
 
-        if (!sender.hasPermission(PERMISSION)) {
-            sender.sendMessage(String.format(Settings.NO_PERMISSION, PERMISSION));
+        if (!sender.hasPermission(PERMISSION_SELF)) {
+            sender.sendMessage(String.format(Settings.NO_PERMISSION, PERMISSION_SELF));
             return true;
         }
 
@@ -58,6 +59,10 @@ public class PositionCMD implements CommandExecutor {
                 player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.GREEN + "Sent your position to all friends.");
                 break;
             case 1:
+                if (!sender.hasPermission(PERMISSION_OTHER)) {
+                    sender.sendMessage(String.format(Settings.NO_PERMISSION, PERMISSION_OTHER));
+                    return true;
+                }
                 Player posPlayer = player.getServer().getPlayer(args[0]);
                 if (posPlayer == null) {
                     player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.RED + "The player is not online.");
