@@ -24,6 +24,13 @@ import java.util.UUID;
 
 import org.jetbrains.annotations.NotNull;
 
+
+/**
+ * Command to manage friends.
+ *
+ * The command can be used by players with the permission "wbtc.friend" to add, remove,
+ * accept, deny, list friends and requests.
+ */
 public class FriendCMD implements CommandExecutor {
     public static final String PERMISSION = "wbtc.friend";
 
@@ -51,6 +58,14 @@ public class FriendCMD implements CommandExecutor {
         this.friendRequestDB = plugin.getDbHandler().getFriendRequestDB();
     }
 
+    /**
+     * Executes the command.
+     * @param sender The sender of the command.
+     * @param cmd The command itself.
+     * @param label The label of the command
+     * @param args The arguments of the command
+     * @return True if the command was executed successfully, false otherwise.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
                              @NotNull Command cmd,
@@ -106,6 +121,10 @@ public class FriendCMD implements CommandExecutor {
         return true;
     }
 
+    /**
+     * Lists the friends of the player.
+     * @param player The player to list the friends of.
+     */
     private void listFriends(Player player) {
         if (friendDB.getFriends(player).isEmpty()) {
             player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.GREEN + "You currently have no friends.");
@@ -118,6 +137,10 @@ public class FriendCMD implements CommandExecutor {
                 player.sendMessage(ChatColor.WHITE + "> " + ChatColor.AQUA + playerNameDB.getName(friend)));
     }
 
+    /**
+     * Lists the friend requests of the player.
+     * @param player The player to list the friend requests of.
+     */
     private void listRequests(Player player) {
         if (friendRequestDB.getFriendRequests(player).isEmpty()) {
             player.sendMessage(Settings.PLUGIN_PREFIX
@@ -133,6 +156,12 @@ public class FriendCMD implements CommandExecutor {
         player.sendMessage("Use /friend accept <player> to accept a request.");
     }
 
+    /**
+     * Adds a friend to the player.
+     * @param target The player to add as a friend.
+     * @param player The player who is adding the friend.
+     * @param allPlayers Whether to add all players or just one.
+     */
     private void addFriend(Player target, Player player, boolean allPlayers) {
         //Send friend request to all online players
         if (allPlayers) { addAllPlayers(player); return; }
@@ -161,6 +190,12 @@ public class FriendCMD implements CommandExecutor {
         db.save();
     }
 
+    /**
+     * Removes a friend from the player.
+     * @param player The player to remove the friend from.
+     * @param friendName The name of the friend to remove.
+     * @param allPlayers Whether to remove all players or just one.
+     */
     private void removeFriend(Player player, String friendName, boolean allPlayers) {
         if (allPlayers) {
             friendDB.removeAllFriends(player);
@@ -175,6 +210,12 @@ public class FriendCMD implements CommandExecutor {
         db.save();
     }
 
+    /**
+     * Accepts a friend request from a player.
+     * @param player The player who is accepting the friend request.
+     * @param friendName The name of the player who sent the friend request.
+     * @param allPlayers Whether to accept all players or just one.
+     */
     private void acceptRequest(Player player, String friendName, boolean allPlayers) {
         //Accept all friend requests.
         if (allPlayers) {
@@ -203,6 +244,12 @@ public class FriendCMD implements CommandExecutor {
         db.save();
     }
 
+    /**
+     * Denies a friend request from a player.
+     * @param player The player who is denying the friend request.
+     * @param friendName The name of the player who sent the friend request.
+     * @param allPlayers Whether to deny all players or just one.
+     */
     private void denyRequest(Player player, String friendName, boolean allPlayers) {
         if (allPlayers) {
             friendRequestDB.clearFriendRequests(player);
@@ -226,6 +273,10 @@ public class FriendCMD implements CommandExecutor {
         db.save();
     }
 
+    /**
+     * Adds all online players to the player's friend list.
+     * @param player The player to add all online players to.
+     */
     private void addAllPlayers(Player player) {
         for (Player current : player.getServer().getOnlinePlayers()) {
             if(current.getUniqueId().equals(player.getUniqueId())) { continue; }

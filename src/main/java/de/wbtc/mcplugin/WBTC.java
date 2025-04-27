@@ -12,6 +12,7 @@ import de.wbtc.mcplugin.commands.PingCMD;
 import de.wbtc.mcplugin.commands.FriendCMD;
 import de.wbtc.mcplugin.commands.GamemodeCMD;
 import de.wbtc.mcplugin.commands.PositionCMD;
+import de.wbtc.mcplugin.commands.WayPointCMD;
 import de.wbtc.mcplugin.commands.EnderChestCMD;
 
 //Event Listeners
@@ -25,6 +26,11 @@ import de.wbtc.mcplugin.db.DataBaseHandler;
 import java.util.Objects;
 
 
+/**
+ * The main class of the WBTC plugin.
+ * This class is responsible for loading and unloading the plugin.
+ * It also registers the commands and events of the plugin.
+ */
 public final class WBTC extends JavaPlugin {
     private DataBaseHandler dbHandler;
 
@@ -76,6 +82,7 @@ public final class WBTC extends JavaPlugin {
             Objects.requireNonNull(getCommand("gm")).setExecutor(new GamemodeCMD());
             Objects.requireNonNull(getCommand("ping")).setExecutor(new PingCMD(plugin));
             Objects.requireNonNull(getCommand("friend")).setExecutor(new FriendCMD(plugin));
+            Objects.requireNonNull(getCommand("waypoint")).setExecutor(new WayPointCMD(plugin));
             Objects.requireNonNull(getCommand("position")).setExecutor(new PositionCMD(plugin));
             Objects.requireNonNull(getCommand("enderchest")).setExecutor(new EnderChestCMD(plugin));
 

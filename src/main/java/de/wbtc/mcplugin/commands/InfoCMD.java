@@ -17,9 +17,22 @@ import org.bukkit.command.ConsoleCommandSender;
 
 import org.jetbrains.annotations.NotNull;
 
+
+/** * Command to display plugin information.
+ *
+ * The command can be used by players with the permission "wbtc.info" to display plugin information.
+ */
 public class InfoCMD implements CommandExecutor {
     public static final String PERMISSION = "wbtc.info";
 
+    /**
+     * Executes the command.
+     * @param sender The sender of the command.
+     * @param cmd The command itself.
+     * @param label The label of the command
+     * @param args The arguments of the command
+     * @return True if the command was executed successfully, false otherwise.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
                              @NotNull Command cmd,

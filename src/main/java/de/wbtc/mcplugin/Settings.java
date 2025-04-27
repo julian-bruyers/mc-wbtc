@@ -8,6 +8,13 @@ package de.wbtc.mcplugin;
 
 import org.bukkit.ChatColor;
 
+
+/**
+ * The settings class of the WBTC plugin.
+ * This class contains all the settings for the plugin.
+ * It is used to store the plugin name, version, author, and other settings.
+ * It also contains the start logo and the plugin prefix.
+ */
 public final class Settings {
     public static final String PLUGIN_NAME = "WBTC";
     public static final String VERSION = "1.0.0-BETA";

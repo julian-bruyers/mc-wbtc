@@ -18,15 +18,34 @@ import org.bukkit.command.ConsoleCommandSender;
 
 import org.jetbrains.annotations.NotNull;
 
+
+/**
+ * The PingCMD class implements the CommandExecutor interface to handle the ping command.
+ * It checks the player's ping and sends a message back to the player.
+ * The command is only available for players with the specified permission.
+ */
 public class PingCMD implements CommandExecutor {
     public static final String PERMISSION = "wbtc.ping";
 
     private final WBTC wbtc;
 
+    /**
+     * Constructor for the PingCMD class.
+     *
+     * @param plugin The main plugin class.
+     */
     public PingCMD(WBTC plugin) {
         this.wbtc = plugin;
     }
 
+    /**
+     * Executes the command.
+     * @param sender The sender of the command.
+     * @param cmd The command itself.
+     * @param label The label of the command
+     * @param args The arguments of the command
+     * @return True if the command was executed successfully, false otherwise.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
                              @NotNull Command cmd,
@@ -64,6 +83,10 @@ public class PingCMD implements CommandExecutor {
         return true;
     }
 
+    /**
+     * Gets the version of the server.
+     * @return The version of the server.
+     */
     private double getVersion() {
         String version = wbtc.getServer().getMinecraftVersion();
         String[] parts = version.split("\\.");

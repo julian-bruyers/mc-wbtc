@@ -42,6 +42,12 @@ commands:
     aliases:
     permission:
     permission-message:
+  waypoint:
+    description: Set a waypoint to your current position.
+    usage: "/waypoint <list, add, remove, show> (<waypoint name>)"
+    aliases: [wp]
+    permission:
+    permission-message:
 permissions:
     wbtc.info:
         description: Permission to use the full info command.

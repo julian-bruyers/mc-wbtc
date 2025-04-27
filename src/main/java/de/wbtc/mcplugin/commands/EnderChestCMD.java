@@ -19,6 +19,12 @@ import org.bukkit.command.ConsoleCommandSender;
 
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Command to open the ender chest of the player or another player.
+ *
+ * The command can be used by players with the permission "wbtc.enderchest.self" to open their own ender chest,
+ * and by players with the permission "wbtc.enderchest.other" to open the ender chest of another player.
+ */
 public class EnderChestCMD implements CommandExecutor {
     public static final String PERMISSION_SELF = "wbtc.enderchest.self";
     public static final String PERMISSION_OTHER = "wbtc.enderchest.other";
@@ -33,6 +39,14 @@ public class EnderChestCMD implements CommandExecutor {
         this.db = plugin.getDbHandler();
     }
 
+    /**
+     * Executes the command.
+     * @param sender The sender of the command.
+     * @param cmd The command itself.
+     * @param label The label of the command
+     * @param args The arguments of the command
+     * @return True if the command was executed successfully, false otherwise.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
                              @NotNull Command cmd,

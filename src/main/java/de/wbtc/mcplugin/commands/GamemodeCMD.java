@@ -17,6 +17,15 @@ import org.bukkit.command.ConsoleCommandSender;
 
 import org.jetbrains.annotations.NotNull;
 
+
+/** Command to set the gamemode of the player.
+ *
+ * The command can be used by players with the permission "wbtc.gamemode" to set their own gamemode.
+ * The command can be used by players with the permission "wbtc.gamemode.survival" to set their gamemode to survival.
+ * The command can be used by players with the permission "wbtc.gamemode.creative" to set their gamemode to creative.
+ * The command can be used by players with the permission "wbtc.gamemode.adventure" to set their gamemode to adventure.
+ * The command can be used by players with the permission "wbtc.gamemode.spectator" to set their gamemode to spectator.
+ */
 public class GamemodeCMD implements CommandExecutor {
     public static final String PERMISSION = "wbtc.gamemode";
     public static final String PERMISSION_SURVIVAL = "wbtc.gamemode.survival";
@@ -29,6 +38,14 @@ public class GamemodeCMD implements CommandExecutor {
     private static final String ADVENTURE = "2";
     private static final String SPECTATOR = "3";
 
+    /**
+     * Executes the command.
+     * @param sender The sender of the command.
+     * @param cmd The command itself.
+     * @param label The label of the command
+     * @param args The arguments of the command
+     * @return True if the command was executed successfully, false otherwise.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
                              @NotNull Command cmd,

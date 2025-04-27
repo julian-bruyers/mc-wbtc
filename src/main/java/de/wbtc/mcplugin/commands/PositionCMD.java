@@ -21,6 +21,12 @@ import java.util.HashSet;
 
 import org.jetbrains.annotations.NotNull;
 
+
+/**
+ * This class handles the /position command.
+ * It allows players to see their own position or the position of their friends.
+ * The command can be used by players and the console.
+ */
 public class PositionCMD implements CommandExecutor {
     public static final String PERMISSION_SELF = "wbtc.position.self";
     public static final String PERMISSION_OTHER = "wbtc.position.other";
@@ -31,10 +37,23 @@ public class PositionCMD implements CommandExecutor {
 
     private final WBTC wbtc;
 
+    /**
+     * Constructor for the PositionCMD class.
+     *
+     * @param plugin The main plugin class.
+     */
     public PositionCMD(WBTC plugin) {
         this.wbtc = plugin;
     }
 
+    /**
+     * Executes the command.
+     * @param sender The sender of the command.
+     * @param cmd The command itself.
+     * @param label The label of the command
+     * @param args The arguments of the command
+     * @return True if the command was executed successfully, false otherwise.
+     */
     @Override
     public boolean onCommand(@NotNull CommandSender sender,
                              @NotNull Command cmd,
@@ -81,6 +100,12 @@ public class PositionCMD implements CommandExecutor {
         return true;
     }
 
+    /**
+     * Sends the position of a player to another player.
+     *
+     * @param msgPlayer The player who will receive the message.
+     * @param posPlayer The player whose position will be sent.
+     */
     private void sendPosition(Player msgPlayer, Player posPlayer) {
         msgPlayer.sendMessage(Settings.PLUGIN_PREFIX
                 + posPlayer.getName()
@@ -96,6 +121,12 @@ public class PositionCMD implements CommandExecutor {
                 + ChatColor.AQUA + getDimension(posPlayer.getWorld().getEnvironment().toString()));
     }
 
+    /**
+     * Gets the dimension of the world.
+     *
+     * @param environment The environment of the world.
+     * @return The dimension of the world.
+     */
     private String getDimension(String environment) {
         switch (environment) {
             case OVERWORLD:

@@ -23,12 +23,17 @@ import java.nio.file.Paths;
 import java.util.Collections;
 
 
+/**
+ * The DataBaseHandler class is responsible for managing the databases used in the plugin.
+ * It initializes the databases, loads data from files, and saves data to files.
+ */
 public class DataBaseHandler {
     public static final String DB_PATH = "./plugins/WBTC";
 
     private FriendDB friendDB;
     private FriendRequestDB friendRequestDB;
     private PlayerNameDB playerNameDB;
+    private WayPointDB wayPointDB;
 
     private final WBTC wbtc;
 
@@ -60,6 +65,12 @@ public class DataBaseHandler {
     public PlayerNameDB getPlayerNameDB() { return this.playerNameDB; }
 
     /**
+     * Getter method for the waypoint database.
+     * @return The waypoint database
+     */
+    public WayPointDB getWayPointDB() { return this.wayPointDB; }
+
+    /**
      * Saves the current state of the databases to the file system.
      */
     public void save() {
@@ -73,6 +84,9 @@ public class DataBaseHandler {
 
             objectMapper.writeValue(new File(DB_PATH + "/" + PlayerNameDB.PLAYER_NAME_DB_FILENAME)
                     , this.playerNameDB.getDB());
+
+            objectMapper.writeValue(new File(DB_PATH + "/" + WayPointDB.WAYPOINT_DB_FILENAME)
+                    , this.wayPointDB.getDB());
 
             wbtc.log("Database files saved.");
         } catch (Exception e) {
@@ -90,6 +104,7 @@ public class DataBaseHandler {
         File friendDbFile = createDBFileIfAbsent(FriendDB.FRIEND_DB_FILENAME);
         File friendRqDbFile = createDBFileIfAbsent(FriendRequestDB.FRIEND_REQUEST_DB_FILENAME);
         File playerNameDbFile = createDBFileIfAbsent(PlayerNameDB.PLAYER_NAME_DB_FILENAME);
+        File wayPointDbFile = createDBFileIfAbsent(WayPointDB.WAYPOINT_DB_FILENAME);
 
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -97,6 +112,7 @@ public class DataBaseHandler {
             this.friendDB = new FriendDB();
             this.friendRequestDB = new FriendRequestDB();
             this.playerNameDB = new PlayerNameDB();
+            this.wayPointDB = new WayPointDB();
 
             this.friendDB.setDB(objectMapper.readValue(friendDbFile,
                     new TypeReference<HashMap<UUID, HashSet<UUID>>>() {}));
@@ -106,6 +122,9 @@ public class DataBaseHandler {
 
             this.playerNameDB.setDB(objectMapper.readValue(playerNameDbFile,
                     new TypeReference<HashMap<UUID, String>>() {}));
+
+            this.wayPointDB.setDB(objectMapper.readValue(wayPointDbFile,
+                    new TypeReference<HashMap<UUID, HashMap<String, int[]>>>() {}));
             save();
         } catch (Exception e) {
             wbtc.log("Error while loading databases!");
@@ -113,6 +132,10 @@ public class DataBaseHandler {
         }
     }
 
+    /**
+     * Creates the database file if it does not exist.
+     * @param fileName The name of the file to create.
+     */
     private File createDBFileIfAbsent(String fileName) {
         File directory = new File(DB_PATH);
         File file = new File(DB_PATH + "/" + fileName);
