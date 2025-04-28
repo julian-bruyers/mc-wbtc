@@ -82,3 +82,7 @@ permissions:
     wbtc.ping:
         description: Permission to use the ping command.
         default: op
+
+    wbtc.waypoint:
+        description: Permission to use the waypoint command.
+        default: op
