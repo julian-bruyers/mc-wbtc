@@ -229,15 +229,28 @@ Refer to the [LuckyPerms Command Usage documentation](https://luckperms.net/wiki
 
 ## Building
 
-This project uses Maven. To build the plugin `.jar` file:
+This project uses Apache Maven to manage dependencies and build the plugin `.jar` file. To compile the plugin yourself, follow these steps:
 
-1.  Make sure you have Maven and the Java Development Kit (JDK 8 or higher) installed.
-2.  Navigate to the project's root directory in your terminal.
-3.  Run the command:
+1.  __Install Prerequisites:__
+    *   __Java Development Kit (JDK):__ Ensure you have JDK 17 or a higher version installed. You can download it from [Adoptium](https://adoptium.net/) or [Oracle](https://www.oracle.com/java/technologies/downloads/). Verify your installation by running `java -version` in your terminal.
+    *   __Apache Maven:__ Download and install Apache Maven from the [official Maven website](https://maven.apache.org/download.cgi). Follow their installation guide for your operating system. Verify your installation by running `mvn -version` in your terminal.
+
+2.  __Clone the Repository (Optional):__ If you haven't already, clone this repository to your local machine using Git:
+    ```bash
+    git clone https://github.com/julian-bruyers/mc-wbtc.git
+    cd mc-wbtc
+    ```
+
+3.  __Navigate to Project Directory:__ Open your terminal or command prompt and navigate to the root directory of the cloned project (the folder containing the `pom.xml` file).
+
+4.  __Run Maven Package Command:__ Execute the following Maven command. This will download dependencies, compile the source code, and package it into a `.jar` file.
     ```bash
     mvn package
     ```
-4.  The compiled `.jar` file will be located in the `target/` directory.
+
+5.  __Locate the JAR File:__ After the build process completes successfully, the compiled plugin `.jar` file (e.g., `WBTC-1.0.0-BETA.jar`) will be located in the `target/` directory within the project folder.
+
+6.  __Install the Plugin:__ Copy this `.jar` file to the `plugins` folder of your Minecraft server and restart or reload the server.
 
 
 ## Contributing & Feature Requests
