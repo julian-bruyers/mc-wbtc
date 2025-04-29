@@ -6,6 +6,7 @@ __Website:__ [github.com/julian-bruyers/mc-wbtc](https://www.github.com/julian-b
 
 A simple Minecraft survival enhancement plugin designed for Bukkit/Paper servers (API version 1.21+). WBTC adds several quality-of-life features and commands to improve the vanilla survival experience for small communities.
 
+
 ## Features
 
 *   __Friend System:__ Manage friends, send/receive requests.
@@ -17,6 +18,7 @@ A simple Minecraft survival enhancement plugin designed for Bukkit/Paper servers
 *   __One Player Sleep:__ Skips the night if at least one player sleeps.
 *   __Database:__ Uses local JSON files to persist data. No external SQL database ist required.
 *   __Maybe more to come...__ If got time and ideas i might add more features in the future.
+
 
 ## Installation
 
@@ -37,89 +39,147 @@ __2. Using a self-compiled JAR:__
 *   Place the copied `.jar` file into the `plugins` folder of your Minecraft server.
 *   Restart or reload your server.
 
+
 ## Commands
 
 Here is a list of all available commands:
 
-`/wbtc` (Alias: `/wbtcinfo`)
+`/wbtc (Alias: /wbtcinfo)`
+
 __Description:__ Get information about the plugin.
-__Usage:__ `/wbtc`
+
+__Usage:__ /wbtc
+
 
 `/friend`
-__Description:__ Manage your friends.
-__Usage:__ `/friend <add|remove|accept|deny> <player>` or `/friend <list|requests>` (Use `@a` for `<player>` to target all players for add/accept/deny/remove actions).
 
-`/enderchest` (Alias: `/ec`)
+__Description:__ Manage your friends.
+
+__Usage:__ /friend <add|remove|accept|deny> <player> or /friend <list|requests> (Use @a for <player> to target all players for add/accept/deny/remove actions).
+
+
+`/enderchest (Alias: /ec)`
+
 __Description:__ Open your ender chest or a friend's ender chest.
-__Usage:__ `/enderchest (<player>)`
+
+__Usage:__ /enderchest (<player>)
+
 
 `/gm`
-__Description:__ Change your gamemode.
-__Usage:__ `/gm <0|1|2|3>` (0=Survival, 1=Creative, 2=Adventure, 3=Spectator)
 
-`/position` (Alias: `/pos`)
+__Description:__ Change your gamemode.
+
+__Usage:__ /gm <0|1|2|3> (0=Survival, 1=Creative, 2=Adventure, 3=Spectator)
+
+
+`/position (Alias: /pos)`
+
 __Description:__ Broadcast your position to friends or get a friend's position.
-__Usage:__ `/position` (broadcasts) or `/position <player>` (gets position)
+
+__Usage:__ /position (broadcasts) or /position <player> (gets position)
+
 
 `/ping`
-__Description:__ Get your current ping to the server.
-__Usage:__ `/ping`
 
-`/waypoint` (Alias: `/wp`)
+__Description:__ Get your current ping to the server.
+
+__Usage:__ /ping
+
+
+`/waypoint (Alias: /wp)`
+
 __Description:__ Manage your waypoints.
-__Usage:__ `/waypoint <list|add|remove|show> (<waypoint name>)`
+
+__Usage:__ /waypoint <list|add|remove|show> (<waypoint name>)
+
 
 ## Permissions
 
 These are the permissions required to use the plugin's features:
 
 `wbtc.info`
+
 __Description:__ Permission to use the full info command.
+
 __Default:__ op
+
 
 `wbtc.friend`
+
 __Description:__ Permission to use the friend command.
+
 __Default:__ op
+
 
 `wbtc.enderchest.self`
+
 __Description:__ Permission to open your own enderchest.
+
 __Default:__ op
+
 
 `wbtc.enderchest.other`
+
 __Description:__ Permission to open other players' ender chests (requires friendship).
+
 __Default:__ op
+
 
 `wbtc.gamemode.survival`
+
 __Description:__ Permission to change your gamemode to survival.
+
 __Default:__ op
+
 
 `wbtc.gamemode.creative`
+
 __Description:__ Permission to change your gamemode to creative.
+
 __Default:__ op
+
 
 `wbtc.gamemode.adventure`
+
 __Description:__ Permission to change your gamemode to adventure.
+
 __Default:__ op
+
 
 `wbtc.gamemode.spectator`
+
 __Description:__ Permission to change your gamemode to spectator.
+
 __Default:__ op
+
 
 `wbtc.position.self`
+
 __Description:__ Permission to broadcast your position and use the base position command.
+
 __Default:__ op
+
 
 `wbtc.position.other`
+
 __Description:__ Permission to request the position of another player (requires friendship).
+
 __Default:__ op
+
 
 `wbtc.ping`
+
 __Description:__ Permission to use the ping command.
+
 __Default:__ op
 
-`wbtc.waypoint` (Note: This permission node is used in `WayPointCMD.java` but not defined in `plugin.yml`. You should add it.)
+
+`wbtc.waypoint`
+
 __Description:__ Permission to use the waypoint command.
+
 __Default:__ op (Recommended)
+
 
 ## Assigning Permissions with LuckyPerms
 
@@ -166,6 +226,7 @@ To manage these permissions effectively, we recommend using a permissions plugin
 
 Refer to the [LuckyPerms Command Usage documentation](https://luckperms.net/wiki/Command-Usage) for more detailed information and advanced features.
 
+
 ## Building
 
 This project uses Maven. To build the plugin `.jar` file:
@@ -178,11 +239,13 @@ This project uses Maven. To build the plugin `.jar` file:
     ```
 4.  The compiled `.jar` file will be located in the `target/` directory.
 
+
 ## Contributing & Feature Requests
 
 This is a private project primarily for personal use. Therefore, __no feature requests or pull requests will be accepted__. Active development on this public repository is not planned.
 
 If you wish to make changes or add features, please fork the repository and maintain your own version.
+
 
 ## License
 
