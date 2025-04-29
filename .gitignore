@@ -12,14 +12,5 @@ build/
 target/
 releases/
 
-# User-specific files
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/dictionaries/
-.idea/libraries/
-.idea/modules.xml
-.idea/vcs.xml
-.idea/.name
-
 # Ignore all files in DEBUG (containing the debug paper server)
 **/DEBUG/
