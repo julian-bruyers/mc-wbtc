@@ -3,6 +3,9 @@
 *.iml
 *.iws
 
+# Exclude Visual Studio Code files
+.vscode
+
 # Exclude compiled output
 out/
 build/
