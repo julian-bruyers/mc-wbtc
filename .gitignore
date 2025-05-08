@@ -14,3 +14,4 @@ releases/
 
 # Ignore all files in DEBUG (containing the debug paper server)
 **/DEBUG/
+/dependency-reduced-pom.xml
