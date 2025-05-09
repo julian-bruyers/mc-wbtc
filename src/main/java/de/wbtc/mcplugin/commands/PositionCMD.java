@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class PositionCMD implements CommandExecutor {
     public static final String PERMISSION_SELF = "wbtc.position.self";
-    public static final String PERMISSION_FRIEND = "wbtc.position.friends";
+    public static final String PERMISSION_FRIENDS = "wbtc.position.friends";
     public static final String PERMISSION_OTHER = "wbtc.position.other";
 
     private static final String OVERWORLD = "NORMAL";
@@ -81,9 +81,9 @@ public class PositionCMD implements CommandExecutor {
                 break;
             // The player wants to see the position of another player
             case 1:
-                if (!sender.hasPermission(PERMISSION_OTHER) && !sender.hasPermission(PERMISSION_FRIEND)) {
+                if (!sender.hasPermission(PERMISSION_OTHER) && !sender.hasPermission(PERMISSION_FRIENDS)) {
                     sender.sendMessage(String.format(Settings.NO_PERMISSION,
-                            PERMISSION_OTHER  + " or " + PERMISSION_FRIEND));
+                            PERMISSION_OTHER  + " or " + PERMISSION_FRIENDS));
                     return true;
                 }
 
