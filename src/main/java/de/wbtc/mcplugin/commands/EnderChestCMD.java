@@ -27,6 +27,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class EnderChestCMD implements CommandExecutor {
     public static final String PERMISSION_SELF = "wbtc.enderchest.self";
+    public static final String PERMISSION_FRIENDS = "wbtc.enderchest.friends";
     public static final String PERMISSION_OTHER = "wbtc.enderchest.other";
 
     private final DataBaseHandler db;
@@ -72,14 +73,20 @@ public class EnderChestCMD implements CommandExecutor {
 
             //Open the ender chest of another player.
             case 1:
-                if (!player.hasPermission(PERMISSION_OTHER)) {
-                    player.sendMessage(String.format(Settings.NO_PERMISSION, PERMISSION_OTHER));
+                if (!player.hasPermission(PERMISSION_OTHER) && !player.hasPermission(PERMISSION_FRIENDS)) {
+                    player.sendMessage(String.format(Settings.NO_PERMISSION,
+                            PERMISSION_FRIENDS + " or " + PERMISSION_OTHER));
                     break;
                 }
 
                 Player target = player.getServer().getPlayer(args[0]);
                 if (target == null) {
                     player.sendMessage(Settings.PLUGIN_PREFIX + "The player is not online.");
+                    break;
+                }
+
+                if (sender.hasPermission(PERMISSION_OTHER)) {
+                    player.openInventory(target.getEnderChest());
                     break;
                 }
 

@@ -58,6 +58,9 @@ permissions:
     wbtc.enderchest.self:
         description: Permission to open your own enderchest.
         default: op
+    wbtc.enderchest.friends:
+        description: Permission to open your friends enderchest.
+        default: op
     wbtc.enderchest.other:
         description: Permission to open other players enderchest.
         default: op
@@ -85,7 +88,6 @@ permissions:
     wbtc.ping:
         description: Permission to use the ping command.
         default: op
-
     wbtc.waypoint:
         description: Permission to use the waypoint command.
         default: op
