@@ -97,95 +97,70 @@ These are the permissions required to use the plugin's features:
 
 __Description:__ Permission to use the full info command.
 
-__Default:__ op
-
 
 `wbtc.friend`
 
 __Description:__ Permission to use the friend command.
-
-__Default:__ op
 
 
 `wbtc.enderchest.self`
 
 __Description:__ Permission to open your own enderchest.
 
-__Default:__ op
 
 `wbtc.enderchest.friends`
 
 __Description:__ Permission to open other players' ender chests (requires friendship).
-
-__Default:__ op
 
 
 `wbtc.enderchest.other`
 
 __Description:__ Permission to open other players' ender chests.
 
-__Default:__ op
-
 
 `wbtc.gamemode.survival`
 
 __Description:__ Permission to change your gamemode to survival.
-
-__Default:__ op
 
 
 `wbtc.gamemode.creative`
 
 __Description:__ Permission to change your gamemode to creative.
 
-__Default:__ op
-
 
 `wbtc.gamemode.adventure`
 
 __Description:__ Permission to change your gamemode to adventure.
-
-__Default:__ op
 
 
 `wbtc.gamemode.spectator`
 
 __Description:__ Permission to change your gamemode to spectator.
 
-__Default:__ op
-
 
 `wbtc.position.self`
 
 __Description:__ Permission to broadcast your position and use the base position command.
 
-__Default:__ op
 
 `wbtc.position.friends`
 
 __Description:__ Permission to request the position of another player (requires friendship).
 
-__Default:__ op
 
 `wbtc.position.other`
 
 __Description:__ Permission to request the position of another player.
-
-__Default:__ op
 
 
 `wbtc.ping`
 
 __Description:__ Permission to use the ping command.
 
-__Default:__ op
-
 
 `wbtc.waypoint`
 
 __Description:__ Permission to use the waypoint command.
-
-__Default:__ op (Recommended)
 
 
 ## Assigning Permissions with LuckyPerms
@@ -225,10 +200,6 @@ To manage these permissions effectively, we recommend using a permissions plugin
     ```
     ```bash
     /lp group admin permission set wbtc.gamemode.spectator true
-    ```
-    Alternatively, if you configure LuckyPerms correctly, a wildcard might work depending on its setup:
-    ```bash
-    /lp group admin permission set wbtc.gamemode.* true
     ```
 
 Refer to the [LuckyPerms Command Usage documentation](https://luckperms.net/wiki/Command-Usage) for more detailed information and advanced features.
