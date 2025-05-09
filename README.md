@@ -1,9 +1,5 @@
 # Minecraft WBTC Plugin
 
-__Version:__ 1.0.0-BETA
-__Author:__ Julian Bruyers
-__Website:__ [github.com/julian-bruyers/mc-wbtc](https://www.github.com/julian-bruyers/mc-wbtc)
-
 A simple Minecraft survival enhancement plugin designed for Bukkit/Paper servers (API version 1.21+). WBTC adds several quality-of-life features and commands to improve the vanilla survival experience for small communities.
 
 
@@ -117,10 +113,16 @@ __Description:__ Permission to open your own enderchest.
 
 __Default:__ op
 
+`wbtc.enderchest.friends`
+
+__Description:__ Permission to open other players' ender chests (requires friendship).
+
+__Default:__ op
+
 
 `wbtc.enderchest.other`
 
-__Description:__ Permission to open other players' ender chests (requires friendship).
+__Description:__ Permission to open other players' ender chests.
 
 __Default:__ op
 
@@ -159,10 +161,15 @@ __Description:__ Permission to broadcast your position and use the base position
 
 __Default:__ op
 
+`wbtc.position.friends`
+
+__Description:__ Permission to request the position of another player (requires friendship).
+
+__Default:__ op
 
 `wbtc.position.other`
 
-__Description:__ Permission to request the position of another player (requires friendship).
+__Description:__ Permission to request the position of another player.
 
 __Default:__ op
 
