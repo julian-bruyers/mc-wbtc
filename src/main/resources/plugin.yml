@@ -76,6 +76,9 @@ permissions:
     wbtc.position.self:
         description: Permission to use the position command.
         default: op
+    wbtc.position.friends:
+        description: Permission to use the position command.
+        default: op
     wbtc.position.other:
       description: Permission to use the position command.
       default: op

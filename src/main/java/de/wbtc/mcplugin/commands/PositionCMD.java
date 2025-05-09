@@ -29,6 +29,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class PositionCMD implements CommandExecutor {
     public static final String PERMISSION_SELF = "wbtc.position.self";
+    public static final String PERMISSION_FRIEND = "wbtc.position.friends";
     public static final String PERMISSION_OTHER = "wbtc.position.other";
 
     private static final String OVERWORLD = "NORMAL";
@@ -70,6 +71,7 @@ public class PositionCMD implements CommandExecutor {
         Player player = (Player) sender;
 
         switch (args.length) {
+            // The player broadcasts his own position
             case 0:
                 HashSet<UUID> friends = this.wbtc.getDbHandler().getFriendDB().getFriends(player);
                 for (Player current : player.getServer().getOnlinePlayers()) {
@@ -77,15 +79,23 @@ public class PositionCMD implements CommandExecutor {
                 }
                 player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.GREEN + "Sent your position to all friends.");
                 break;
+            // The player wants to see the position of another player
             case 1:
-                if (!sender.hasPermission(PERMISSION_OTHER)) {
-                    sender.sendMessage(String.format(Settings.NO_PERMISSION, PERMISSION_OTHER));
+                if (!sender.hasPermission(PERMISSION_OTHER) && !sender.hasPermission(PERMISSION_FRIEND)) {
+                    sender.sendMessage(String.format(Settings.NO_PERMISSION,
+                            PERMISSION_OTHER  + " or " + PERMISSION_FRIEND));
                     return true;
                 }
+
                 Player posPlayer = player.getServer().getPlayer(args[0]);
                 if (posPlayer == null) {
                     player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.RED + "The player is not online.");
                     return true;
+                }
+
+                if (sender.hasPermission(PERMISSION_OTHER)) {
+                    sendPosition(player, posPlayer);
+                    break;
                 }
 
                 if (this.wbtc.getDbHandler().getFriendDB().isFriend(player, posPlayer)) {
