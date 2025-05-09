@@ -110,7 +110,7 @@ public class WayPointCMD implements CommandExecutor {
             return;
         }
 
-        ArrayList<Pair<String, int[]>> wayPoints= this.wayPointDB.getAllWaypoints(player);
+        ArrayList<Pair<String, Pair<int[], String>>> wayPoints= this.wayPointDB.getAllWaypoints(player);
 
         player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.GREEN + "Your waypoints: " + ChatColor.WHITE);
 
@@ -119,10 +119,11 @@ public class WayPointCMD implements CommandExecutor {
             return;
         }
 
-        for (Pair<String, int[]> current : wayPoints) {
+        for (Pair<String, Pair<int[], String>> current : wayPoints) {
             player.sendMessage(ChatColor.WHITE + "> " +
                     ChatColor.GREEN + current.getFirst() + " " +
-                    getPositionString(current.getSecond()));
+                    getPositionString(current.getSecond().getFirst()) +
+                    " in the " + current.getSecond().getSecond());
         }
     }
 
@@ -153,7 +154,8 @@ public class WayPointCMD implements CommandExecutor {
                         player.getLocation().getBlockX(),
                         player.getLocation().getBlockY(),
                         player.getLocation().getBlockZ()
-                }));
+                })
+                + " in the " + this.wayPointDB.getWayPoint(player, wpName).getSecond().getSecond());
 
         db.save();
     }
@@ -201,10 +203,12 @@ public class WayPointCMD implements CommandExecutor {
             return;
         }
 
-        int[] pos = this.wayPointDB.getWayPoint(player, wpName).getSecond();
+        int[] pos = this.wayPointDB.getWayPoint(player, wpName).getSecond().getFirst();
+        String dimension = this.wayPointDB.getWayPoint(player, wpName).getSecond().getSecond();
         player.sendMessage(Settings.PLUGIN_PREFIX +
                 ChatColor.GREEN + "The waypoint is at " +
-                getPositionString(pos));
+                getPositionString(pos) +
+                ChatColor.WHITE + " in the " + dimension);
         db.save();
     }
 }

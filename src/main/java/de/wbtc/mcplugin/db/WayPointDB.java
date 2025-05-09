@@ -25,7 +25,11 @@ public class WayPointDB {
     public static final String WAYPOINT_DB_FILENAME = "waypoints.wbtc";
     public static final int MAX_WAYPOINT_NAME_LENGTH = 24;
 
-    private HashMap<UUID, HashMap<String, int[]>> db;
+    private static final String OVERWORLD = "NORMAL";
+    private static final String NETHER = "NETHER";
+    private static final String END = "THE_END";
+
+    private HashMap<UUID, HashMap<String, Pair<int[], String>>> db;
 
 
     /**
@@ -39,13 +43,13 @@ public class WayPointDB {
      * Getter method for the waypoint database.
      * @return The waypoint database.
      */
-    public HashMap<UUID, HashMap<String, int[]>> getDB() { return this.db; }
+    public HashMap<UUID, HashMap<String, Pair<int[], String>>> getDB() { return this.db; }
 
     /**
      * Setter method for the waypoint database.
      * @param db The waypoint database.
      */
-    public void setDB(HashMap<UUID, HashMap<String, int[]>> db) { this.db = db; }
+    public void setDB(HashMap<UUID, HashMap<String, Pair<int[], String>>> db) { this.db = db; }
 
     /**
      * Check if the player has waypoints.
@@ -63,7 +67,7 @@ public class WayPointDB {
      * @return True if the player already has a waypoint with the given name, false otherwise.
      */
     public boolean wayPointExists(Player player, String wpName) {
-        HashMap<String, int[]> wayPoints = this.db.get(player.getUniqueId());
+        HashMap<String, Pair<int[], String>> wayPoints = this.db.get(player.getUniqueId());
 
         if (wayPoints == null) { return false; }
 
@@ -76,7 +80,7 @@ public class WayPointDB {
      * @param wpName The name of the waypoint to add.
      */
     public void addWayPoint(Player player, String wpName) {
-        HashMap<String, int[]> wayPoints = this.db.get(player.getUniqueId());
+        HashMap<String, Pair<int[], String>> wayPoints = this.db.get(player.getUniqueId());
 
         if (wayPoints == null) { wayPoints = new HashMap<>(); }
 
@@ -84,7 +88,7 @@ public class WayPointDB {
                                     player.getLocation().getBlockY(),
                                     player.getLocation().getBlockZ()};
 
-        wayPoints.put(wpName, position);
+        wayPoints.put(wpName, new Pair<>(position, getDimension(player.getWorld().getEnvironment().toString())));
         this.db.put(player.getUniqueId(), wayPoints);
     }
 
@@ -103,8 +107,8 @@ public class WayPointDB {
      * @param wpName The name of the waypoint.
      * @return A pair containing the waypoint name and its position.
      */
-    public Pair<String, int[]> getWayPoint(Player player, String wpName) {
-        HashMap<String, int[]> wayPoints = this.db.get(player.getUniqueId());
+    public Pair<String, Pair<int[], String>> getWayPoint(Player player, String wpName) {
+        HashMap<String, Pair<int[], String>> wayPoints = this.db.get(player.getUniqueId());
 
         return new Pair<>(wpName, wayPoints.get(wpName));
     }
@@ -114,18 +118,32 @@ public class WayPointDB {
      * @param player The player to get the waypoints for.
      * @return An ArrayList of pairs containing the waypoint name and its position.
      */
-    public ArrayList<Pair<String, int[]>> getAllWaypoints(Player player) {
-        HashMap<String, int[]> wayPoints = this.db.get(player.getUniqueId());
+    public ArrayList<Pair<String, Pair<int[], String>>> getAllWaypoints(Player player) {
+        HashMap<String, Pair<int[], String>> wayPoints = this.db.get(player.getUniqueId());
 
         if (wayPoints == null) { return null; }
 
-        ArrayList<Pair<String, int[]>> wayPointList = new ArrayList<>();
+        ArrayList<Pair<String, Pair<int[], String>>> wayPointList = new ArrayList<>();
 
         for (String current : wayPoints.keySet()) {
-            int[] position = wayPoints.get(current);
-            wayPointList.add(new Pair<>(current, position));
+            int[] position = wayPoints.get(current).getFirst();
+            String dimension = wayPoints.get(current).getSecond();
+            wayPointList.add(new Pair<>(current, new Pair<>(position, dimension)));
         }
 
         return wayPointList;
+    }
+
+    private String getDimension(String input) {
+        switch (input) {
+            case OVERWORLD:
+                return "Overworld";
+            case NETHER:
+                return "Nether";
+            case END:
+                return "End";
+            default:
+                return input;
+        }
     }
 }

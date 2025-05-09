@@ -13,6 +13,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 
 import de.wbtc.mcplugin.WBTC;
 
+import de.wbtc.mcplugin.utils.Pair;
 
 import java.io.File;
 import java.util.UUID;
@@ -124,7 +125,7 @@ public class DataBaseHandler {
                     new TypeReference<HashMap<UUID, String>>() {}));
 
             this.wayPointDB.setDB(objectMapper.readValue(wayPointDbFile,
-                    new TypeReference<HashMap<UUID, HashMap<String, int[]>>>() {}));
+                    new TypeReference<HashMap<UUID, HashMap<String, Pair<int[], String>>>>() {}));
             save();
         } catch (Exception e) {
             wbtc.log("Error while loading databases!");
