@@ -5,6 +5,8 @@ authors: [Julian Bruyers]
 description: A simple Minecraft survival bukkit/paper server enhancement plugin.
 website: https://www.github.com/julian-bruyers/mc-wbtc
 api-version: '1.21'
+softdepend:
+  - ProtocolLib
 commands:
   wbtc:
     description: Get information about the plugin.
