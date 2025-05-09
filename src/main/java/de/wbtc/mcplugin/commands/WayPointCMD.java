@@ -157,7 +157,7 @@ public class WayPointCMD implements CommandExecutor {
                 })
                 + " in the " + this.wayPointDB.getWayPoint(player, wpName).getSecond().getSecond());
 
-        db.save();
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 
     /**
@@ -183,7 +183,7 @@ public class WayPointCMD implements CommandExecutor {
                 ChatColor.GREEN + "Removed waypoint " +
                 ChatColor.WHITE + wpName);
 
-        db.save();
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 
     /**
@@ -209,6 +209,7 @@ public class WayPointCMD implements CommandExecutor {
                 ChatColor.GREEN + "The waypoint is at " +
                 getPositionString(pos) +
                 ChatColor.WHITE + " in the " + dimension);
-        db.save();
+
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 }

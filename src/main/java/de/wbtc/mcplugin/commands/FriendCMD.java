@@ -178,7 +178,8 @@ public class FriendCMD implements CommandExecutor {
             friendDB.addFriend(player.getUniqueId(), target.getUniqueId(), player.getServer());
             player.sendMessage(Settings.PLUGIN_PREFIX + target.getName()
                                 + ChatColor.GREEN + " has already sent you a friend request. You are now friends.");
-            db.save();
+
+            if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
             return;
         }
 
@@ -187,7 +188,8 @@ public class FriendCMD implements CommandExecutor {
         player.sendMessage(Settings.PLUGIN_PREFIX
                                 + ChatColor.GREEN +  "Friend request has been sent to "
                                 + ChatColor.WHITE + target.getName());
-        db.save();
+
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 
     /**
@@ -200,14 +202,16 @@ public class FriendCMD implements CommandExecutor {
         if (allPlayers) {
             friendDB.removeAllFriends(player);
             player.sendMessage(Settings.PLUGIN_PREFIX + ChatColor.GREEN + "All your friends have been removed.");
-            db.save();
+
+            if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
             return;
         }
 
         friendDB.removeFriend(player.getUniqueId(), db.getPlayerNameDB().getUUID(friendName));
         player.sendMessage(Settings.PLUGIN_PREFIX + friendName
                             + ChatColor.GREEN + " has been removed from your friends list.");
-        db.save();
+
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 
     /**
@@ -225,7 +229,8 @@ public class FriendCMD implements CommandExecutor {
             friendRequestDB.clearFriendRequests(player);
             player.sendMessage(Settings.PLUGIN_PREFIX
                                 + ChatColor.GREEN + "All your open friend requests have been accepted.");
-            db.save();
+
+            if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
             return;
         }
 
@@ -241,7 +246,8 @@ public class FriendCMD implements CommandExecutor {
         } else {
             player.sendMessage(Settings.PLUGIN_PREFIX + "You have no open friend request from this player.");
         }
-        db.save();
+
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 
     /**
@@ -255,7 +261,8 @@ public class FriendCMD implements CommandExecutor {
             friendRequestDB.clearFriendRequests(player);
             player.sendMessage(Settings.PLUGIN_PREFIX
                             + ChatColor.GREEN + "All your open friend requests have been denied.");
-            db.save();
+
+            if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
             return;
         }
 
@@ -270,7 +277,8 @@ public class FriendCMD implements CommandExecutor {
         } else {
             player.sendMessage(Settings.PLUGIN_PREFIX + "You have no open friend request from this player.");
         }
-        db.save();
+
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 
     /**
@@ -295,6 +303,7 @@ public class FriendCMD implements CommandExecutor {
 
         player.sendMessage(Settings.PLUGIN_PREFIX
                 + ChatColor.GREEN + "Friend requests have been sent to all online players.");
-        db.save();
+
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 }

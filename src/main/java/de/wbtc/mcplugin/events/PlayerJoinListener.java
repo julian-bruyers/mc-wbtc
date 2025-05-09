@@ -38,7 +38,8 @@ public class PlayerJoinListener implements Listener {
     private void updatePlayerNameDB(Player player) {
         db.getPlayerNameDB().updatePlayer(player);
         wbtc.log("Updated player name in database: " + player.getName());
-        db.save();
+
+        if (Settings.DB_ALWAYS_SAVE_MODE) db.save();
     }
 
     private void showOpenRequests(Player player) {

@@ -11,9 +11,11 @@ package de.wbtc.mcplugin.db;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.core.type.TypeReference;
 
+import de.wbtc.mcplugin.Settings;
 import de.wbtc.mcplugin.WBTC;
 
 import de.wbtc.mcplugin.utils.Pair;
+import org.bukkit.Bukkit;
 
 import java.io.File;
 import java.util.UUID;
@@ -126,11 +128,13 @@ public class DataBaseHandler {
 
             this.wayPointDB.setDB(objectMapper.readValue(wayPointDbFile,
                     new TypeReference<HashMap<UUID, HashMap<String, Pair<int[], String>>>>() {}));
-            save();
         } catch (Exception e) {
             wbtc.log("Error while loading databases!");
             wbtc.log(e.getMessage());
         }
+
+        // Start the database save task
+        Bukkit.getScheduler().runTaskTimerAsynchronously(wbtc, this::save, 0L, Settings.DB_SAVE_INTERVAL * 20L);
     }
 
     /**

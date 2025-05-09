@@ -38,6 +38,12 @@ public final class Settings {
                                                         + PLUGIN_NAME
                                                         + "] This command can only be executed by players.";
 
+    // Everytime a value in teh database is changed, the database is saved.
+    // For larger databases this might result into lags.
+    public static final boolean DB_ALWAYS_SAVE_MODE = false;
+
+    public static final int DB_SAVE_INTERVAL = 60; // in seconds
+
 
     public Settings() {
         throw new IllegalStateException("Utility class");
