@@ -16,25 +16,25 @@ commands:
     permission-message:
   friend:
     description: Manage your friends.
-    usage: "/friend add/remove/accept/deny <player> or /friend list or /friend requests also (@a for <player> addresses all players)"
+    usage: "/friend [add|remove|accept|deny]"
     aliases:
     permission:
     permission-message:
   enderchest:
     description: Open your enderchest or another players enderchest when giving their name (Only works with friends).
-    usage: "/enderchest (<player>)"
+    usage: "/enderchest"
     aliases: [ec]
     permission:
     permission-message:
   gm:
     description: Change your gamemode.
-    usage: "/gm <0/1/2/3>"
+    usage: "/gm [0|1|2|3]"
     aliases:
     permission:
     permission-message:
   position:
     description: Broadcast your positions to your friends or get a friends position.
-    usage: "/position (broadcasts your position to all your friends) /position <player> (gets the position of a friend)"
+    usage: "/position"
     aliases: [pos]
     permission:
     permission-message:
@@ -46,8 +46,14 @@ commands:
     permission-message:
   waypoint:
     description: Set a waypoint to your current position.
-    usage: "/waypoint <list, add, remove, show> (<waypoint name>)"
+    usage: "/waypoint [list|add|remove|show]"
     aliases: [wp]
+    permission:
+    permission-message:
+  invsee:
+    description: See the inventory of another player.
+    usage: "/invsee <player>"
+    aliases:
     permission:
     permission-message:
 permissions:
@@ -92,4 +98,7 @@ permissions:
         default: op
     wbtc.waypoint:
         description: Permission to use the waypoint command.
+        default: op
+    wbtc.invsee:
+        description: Permission to use the invsee command.
         default: op

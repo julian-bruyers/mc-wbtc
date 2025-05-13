@@ -10,6 +10,7 @@ package de.wbtc.mcplugin;
 import de.wbtc.mcplugin.commands.InfoCMD;
 import de.wbtc.mcplugin.commands.PingCMD;
 import de.wbtc.mcplugin.commands.FriendCMD;
+import de.wbtc.mcplugin.commands.InvseeCMD;
 import de.wbtc.mcplugin.commands.GamemodeCMD;
 import de.wbtc.mcplugin.commands.PositionCMD;
 import de.wbtc.mcplugin.commands.WayPointCMD;
@@ -80,6 +81,7 @@ public final class WBTC extends JavaPlugin {
         try {
             Objects.requireNonNull(getCommand("wbtc")).setExecutor(new InfoCMD());
             Objects.requireNonNull(getCommand("gm")).setExecutor(new GamemodeCMD());
+            Objects.requireNonNull(getCommand("invsee")).setExecutor(new InvseeCMD());
             Objects.requireNonNull(getCommand("ping")).setExecutor(new PingCMD(plugin));
             Objects.requireNonNull(getCommand("friend")).setExecutor(new FriendCMD(plugin));
             Objects.requireNonNull(getCommand("waypoint")).setExecutor(new WayPointCMD(plugin));
