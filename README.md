@@ -15,25 +15,6 @@ A simple Minecraft survival enhancement plugin designed for Bukkit/Paper servers
 *   __Database:__ Uses local JSON files to persist data. No external SQL database ist required.
 
 
-## Roadmap
-__Commands:__
-*   /afk Command
-*   /nick Command
-*   /realname Command
-*   /playerhead Command
-*   /setspawn Command
-
-__Features:__
-*   Clan system and clan features (spawn, chat, etc.)
-*   Deathchest/grave system
-*   Tree felling
-*   Player outlines (see friends/clan members through walls)
-
-__Improvments:__
-*   Tab autocomplete for all commands
-*   Configurable messages and config file
-
-
 ## Installation
 
 There are two ways to install the WBTC plugin:
@@ -233,6 +214,28 @@ To manage these permissions effectively, we recommend using a permissions plugin
     ```
 
 Refer to the [LuckyPerms Command Usage documentation](https://luckperms.net/wiki/Command-Usage) for more detailed information and advanced features.
+
+
+## Development Roadmap (Planned Features)
+__Commands:__
+*   /day command
+*   /night command
+*   /weather command
+*   /afk Command
+*   /nick Command
+*   /realname Command
+*   /playerhead Command
+*   /setspawn Command
+
+__Features:__
+*   Clan system and clan features (spawn, chat, etc.)
+*   Deathchest/grave system
+*   Tree felling
+*   Player outlines (see friends/clan members through walls)
+
+__Improvments:__
+*   Tab autocomplete for all commands
+*   Configurable messages and config file
 
 
 ## Building
