@@ -13,7 +13,25 @@ A simple Minecraft survival enhancement plugin designed for Bukkit/Paper servers
 *   __Waypoints:__ Set, list, remove, and view personal waypoints.
 *   __One Player Sleep:__ Skips the night if at least one player sleeps.
 *   __Database:__ Uses local JSON files to persist data. No external SQL database ist required.
-*   __Maybe more to come...__ If got time and ideas i might add more features in the future.
+
+
+## Roadmap
+__Commands:__
+*   /afk Command
+*   /nick Command
+*   /realname Command
+*   /playerhead Command
+*   /setspawn Command
+
+__Features:__
+*   Clan system and clan features (spawn, chat, etc.)
+*   Deathchest/grave system
+*   Tree felling
+*   Player outlines (see friends/clan members through walls)
+
+__Improvments:__
+*   Tab autocomplete for all commands
+*   Configurable messages and config file
 
 
 ## Installation
@@ -89,6 +107,13 @@ __Description:__ Manage your waypoints.
 __Usage:__ /waypoint <list|add|remove|show> (<waypoint name>)
 
 
+`/invsee`
+
+__Description:__ View another player's inventory.
+
+__Usage:__ /invsee <player>
+
+
 ## Permissions
 
 These are the permissions required to use the plugin's features:
@@ -161,6 +186,11 @@ __Description:__ Permission to use the ping command.
 `wbtc.waypoint`
 
 __Description:__ Permission to use the waypoint command.
+
+
+`wbtc.invsee`
+
+__Description:__ Permission to use the inventory see command.
 
 
 ## Assigning Permissions with LuckyPerms
